@@ -3,11 +3,14 @@
 <package format="3">
   <name>cable_robot</name>
   <version>0.0.0</version>
-  <description>Cable robot operating by for cables</description>
+  <description>Cable robot operating by four cables</description>
   <maintainer email="korr237i@yandex.ru">genzorr</maintainer>
   <license>Copyright</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

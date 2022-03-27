@@ -1,35 +1,46 @@
 cmake_minimum_required(VERSION 3.8)
 project(cable_robot)
 
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+endif()
+
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
+# find packages
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
-add_executable(general_control_unit src/general_control_unit.cpp)
+# set dependencies
+set(dependencies "rclcpp" "std_msgs" "geometry_msgs")
+
+# add sources/headers
+set(gcu_node_SRCS
+  src/general_control_unit.cpp
+)
+set(gcu_node_HDRS
+  include/cable_robot/general_control_unit.h
+)
+
+# add execs
+add_executable(general_control_unit ${gcu_node_SRCS} ${gcu_node_HDRS})
+ament_target_dependencies(general_control_unit ${dependencies})
 target_include_directories(general_control_unit PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(general_control_unit PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
-
 install(TARGETS general_control_unit
-  DESTINATION lib/${PROJECT_NAME})
+        DESTINATION lib/${PROJECT_NAME})
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
-  set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
-  set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
-endif()
+#add_executable(general_control_unit src/general_control_unit.cpp)
+#ament_target_dependencies(general_control_unit rclcpp std_msgs geometry_msgs)
+#target_include_directories(general_control_unit PUBLIC
+#  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+#  $<INSTALL_INTERFACE:include>)
+#install(TARGETS general_control_unit
+#  DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
