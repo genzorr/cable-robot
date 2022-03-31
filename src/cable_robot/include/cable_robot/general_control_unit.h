@@ -10,17 +10,26 @@ class GCU: public rclcpp::Node
 public:
     GCU();
 private:
+    void debugCallback();
     void updateCallback();
-    void controlCallback(geometry_msgs::msg::Twist::ConstSharedPtr vel);
+    void controlsUpdateCallback(geometry_msgs::msg::Twist::ConstSharedPtr vel);
 
     double x_;
     double y_;
     double z_;
-    double xVel_;
-    double yVel_;
-    double zVel_;
-    int controlTimerInterval_;
-    rclcpp::TimerBase::SharedPtr controlTimer_;
+    double areaSideX_;
+    double areaSideY_;
+    double areaSideZ_;
+    double platformSide_;
+    double maxSpeed_;
+    double payloadMass_;
+    double xSpeed_;
+    double ySpeed_;
+    double zSpeed_;
+    double controlUpdateInterval_;
+    double debugInterval_;
+    rclcpp::TimerBase::SharedPtr controlUpdateTimer_;
+    rclcpp::TimerBase::SharedPtr debugTimer_;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr controlSub_;
 };
 

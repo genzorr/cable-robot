@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="cable_robot" targetName="general_control_unit" />
+      <config projectName="cable_robot" targetName="teleop" />
+      <config projectName="cable_robot" targetName="cable_robot_uninstall" />
+      <config projectName="cable_robot" targetName="uninstall" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" GENERATION_DIR="$PROJECT_DIR$/build" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="83d28c76-5cc4-4609-80f8-1c48aba6a35b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot_launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cable-robot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cable-robot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/general_control_unit.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/general_control_unit.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/package.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/package.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/general_control_unit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/general_control_unit.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2021" />
+    <option name="minorVersion" value="3.3" />
+  </component>
+  <component name="ProjectId" id="26A5aEthSsBK9yPuUp8RZUlTKp6" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
+    <property name="ctest.advertisement.all.test.configuration.is.created" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../escpos_parser" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/cable_robot" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/cable_robot/include/cable_robot" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Custom Build Application.Build cable_robot">
+    <configuration name="Build cable_robot" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="CMake_commands" CONFIG_NAME="CMake_commands" RUN_PATH="$PROJECT_DIR$/build/cable_robot/general_control_unit">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cable_robot_uninstall" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="cable_robot_uninstall" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="general_control_unit" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="general_control_unit" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="cable_robot" RUN_TARGET_NAME="general_control_unit">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="uninstall" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="uninstall" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All CTest" type="CTestRunConfiguration" factoryName="CTestRun" PROGRAM_PARAMS="--extra-verbose" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$CMakeCurrentLocalGenerationDir$" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_PATH="$CTestCurrentExecutableName$" EXPLICIT_BUILD_TARGET_NAME="all" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.cable_robot_uninstall" />
+      <item itemvalue="CMake Application.general_control_unit" />
+      <item itemvalue="CMake Application.uninstall" />
+      <item itemvalue="CTest Application.All CTest" />
+      <item itemvalue="Custom Build Application.Build cable_robot" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="83d28c76-5cc4-4609-80f8-1c48aba6a35b" name="Changes" comment="" />
+      <created>1646853612615</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1646853612615</updated>
+      <workItem from="1646853613753" duration="1487000" />
+      <workItem from="1646855873646" duration="33000" />
+      <workItem from="1646856651114" duration="621000" />
+      <workItem from="1646858527685" duration="12000" />
+      <workItem from="1646858618181" duration="2922000" />
+      <workItem from="1646861557308" duration="1759000" />
+      <workItem from="1648246417800" duration="13000" />
+      <workItem from="1648246458486" duration="18000" />
+      <workItem from="1648246619573" duration="5300000" />
+      <workItem from="1648391828638" duration="1374000" />
+      <workItem from="1648404034051" duration="7800000" />
+      <workItem from="1648498188677" duration="511000" />
+      <workItem from="1648498722128" duration="1489000" />
+      <workItem from="1648500232220" duration="590000" />
+      <workItem from="1648500968459" duration="4675000" />
+      <workItem from="1648644202702" duration="19835000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

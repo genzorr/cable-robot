@@ -1,0 +1,14 @@
+/cable_robot/gcu:
+  ros__parameters:
+    debugInterval: 2e-1  # timer interval for debug info
+    controlUpdateInterval: 1e-6  # timer interval for controls update
+    # initial position
+    x: 0.0
+    y: 0.0
+    z: 1.0
+    areaSideX: 6.0  # x size of side of area
+    areaSideY: 6.0  # y size of side of area
+    areaSideZ: 1.8  # z size of side of area
+    platformSide: 0.25  # size of size of platform
+    maxSpeed: 3.0  # maximum speed of platform
+    payloadMass: 4.0 # mass of payload

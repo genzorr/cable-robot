@@ -43,4 +43,10 @@ install(TARGETS general_control_unit
 #install(TARGETS general_control_unit
 #  DESTINATION lib/${PROJECT_NAME})
 
+# copy dirs to install folder
+install(DIRECTORY launch
+        DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY config
+        DESTINATION share/${PROJECT_NAME})
+
 ament_package()

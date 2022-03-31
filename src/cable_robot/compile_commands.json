@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/genzorr/dev/cable-robot/src/cable_robot",
+  "command": "/usr/bin/c++   -I/home/genzorr/dev/cable-robot/src/cable_robot/include    -Wall -Wextra -Wpedantic -std=gnu++17 -o CMakeFiles/general_control_unit.dir/src/general_control_unit.cpp.o -c /home/genzorr/dev/cable-robot/src/cable_robot/src/general_control_unit.cpp",
+  "file": "/home/genzorr/dev/cable-robot/src/cable_robot/src/general_control_unit.cpp"
+}
+]
