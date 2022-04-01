@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot name="cable_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:property name="base_width" value="0.25"/>
+    <xacro:property name="base_length" value="0.25"/>
+    <xacro:property name="base_height" value="0.1"/>
+
+    <material name="orange">
+        <color rgba="1.0 0.65 0 1"/>
+    </material>
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="${base_length} ${base_width} ${base_height}"/>
+            </geometry>
+            <material name="orange"/>
+            <origin xyz="0 0 1"/>
+        </visual>
+    </link>
+
+</robot>

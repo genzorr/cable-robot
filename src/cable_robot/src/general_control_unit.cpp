@@ -4,7 +4,11 @@
 #include "cable_robot/general_control_unit.h"
 
 GCU::GCU()
-: Node("gcu"), xSpeed_(0.), ySpeed_(0.), zSpeed_(0.)
+: Node("gcu"), x_(0.), y_(0.), z_(0.),
+areaSideX_(0.), areaSideY_(0.), areaSideZ_(0.),
+platformSide_(0.), maxSpeed_(0.), payloadMass_(0.),
+xSpeed_(0.), ySpeed_(0.), zSpeed_(0.),
+controlUpdateInterval_(0.), debugInterval_(0.)
 {
     RCLCPP_INFO(this->get_logger(), "Initializing General Control Unit");
 
