@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot name="cable_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:property name="base_width" value="0.25"/>
+    <xacro:property name="base_length" value="0.25"/>
+    <xacro:property name="base_height" value="0.1"/>
+    <xacro:property name="area_side" value="6"/>
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+    <material name="orange">
+        <color rgba="1.0 0.65 0 1"/>
+    </material>
+
+    <xacro:macro name="stand" params="num posx posy">
+        <link name="stand${num}">
+            <visual>
+                <geometry>
+                    <cylinder length="2" radius="0.025"/>
+                </geometry>
+                <origin xyz="${posx} ${posy} ${2/2}"/>
+                <material name="black"/>
+            </visual>
+        </link>
+
+<!--        <joint name="base_to_stand${num}" type="fixed">-->
+<!--            <parent link="base_link"/>-->
+<!--            <child link="cable${num}"/>-->
+<!--&lt;!&ndash;            <origin xyz="${area_side/2} ${area_side/2} ${1+base_height/2}"/>&ndash;&gt;-->
+<!--        </joint>-->
+    </xacro:macro>
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="${base_length} ${base_width} ${base_height}"/>
+            </geometry>
+            <material name="orange"/>
+            <origin xyz="3 3 0"/>
+<!--            <origin xyz="${area_side/2} ${area_side/2} 0"/>-->
+        </visual>
+    </link>
+
+<!--    <xacro:stand num="1" posx="0" posy="0"/>-->
+
+</robot>

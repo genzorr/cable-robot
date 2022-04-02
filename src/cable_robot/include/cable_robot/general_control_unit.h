@@ -1,9 +1,11 @@
 #ifndef CABLE_ROBOT_GENERAL_CONTROL_UNIT_H
 #define CABLE_ROBOT_GENERAL_CONTROL_UNIT_H
 
-#include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/string.hpp"
-#include "geometry_msgs/msg/twist.hpp"
+#include <rclcpp/rclcpp.hpp>
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2_ros/transform_broadcaster.h>
+#include <std_msgs/msg/string.hpp>
+#include <geometry_msgs/msg/twist.hpp>
 
 class GCU: public rclcpp::Node
 {
@@ -31,6 +33,7 @@ private:
     rclcpp::TimerBase::SharedPtr controlUpdateTimer_;
     rclcpp::TimerBase::SharedPtr debugTimer_;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr controlSub_;
+    std::unique_ptr<tf2_ros::TransformBroadcaster> tfBroadcaster_;
 };
 
 #endif //CABLE_ROBOT_GENERAL_CONTROL_UNIT_H
