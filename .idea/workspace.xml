@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="cable_robot" targetName="general_control_unit" />
@@ -16,9 +19,15 @@
   <component name="ChangeListManager">
     <list default="true" id="83d28c76-5cc4-4609-80f8-1c48aba6a35b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/general_control_unit.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/general_control_unit.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot.launch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/display.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/display.launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/rviz/urdf.rviz" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/rviz/urdf.rviz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/general_control_unit.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/general_control_unit.launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/package.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/package.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/general_control_unit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/general_control_unit.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/urdf/cable_robot.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/urdf/cable_robot.urdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +88,7 @@
     <property name="cmake.loaded.for.project" value="true" />
     <property name="ctest.advertisement.all.test.configuration.is.created" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/cable_robot/launch" />
-    <property name="settings.editor.selected.configurable" value="CLionExternalConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -93,11 +102,6 @@
   <component name="RunManager" selected="Custom Build Application.Build cable_robot">
     <configuration name="Build cable_robot" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="CMake_commands" CONFIG_NAME="CMake_commands" RUN_PATH="$PROJECT_DIR$/build/cable_robot/general_control_unit">
       <method v="2" />
-    </configuration>
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
     </configuration>
     <configuration name="cable_robot_uninstall" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="cable_robot_uninstall" CONFIG_NAME="Debug">
       <method v="2">
@@ -157,7 +161,14 @@
       <workItem from="1648827549239" duration="5000" />
       <workItem from="1648827570969" duration="12779000" />
       <workItem from="1648901929122" duration="4334000" />
-      <workItem from="1648917455125" duration="1908000" />
+      <workItem from="1648917455125" duration="3261000" />
+      <workItem from="1648921286697" duration="1319000" />
+      <workItem from="1648926233442" duration="2482000" />
+      <workItem from="1648929099073" duration="1123000" />
+      <workItem from="1648930393194" duration="108000" />
+      <workItem from="1648931361933" duration="1700000" />
+      <workItem from="1648935001125" duration="176000" />
+      <workItem from="1648935760862" duration="3551000" />
     </task>
     <servers />
   </component>
@@ -178,5 +189,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

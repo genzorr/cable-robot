@@ -14,7 +14,7 @@ def generate_launch_description():
     gcu_node = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('cable_robot'), 'launch'),
-            '/cable_robot.launch.py'])
+            '/general_control_unit.launch.py'])
     )
 
     return LaunchDescription([

@@ -36,7 +36,8 @@
                 <box size="${base_length} ${base_width} ${base_height}"/>
             </geometry>
             <material name="orange"/>
-            <origin xyz="${area_side/2} ${area_side/2} 0"/>
+            <origin xyz="3 3 0"/>
+<!--            <origin xyz="${area_side/2} ${area_side/2} 0"/>-->
         </visual>
     </link>
 
