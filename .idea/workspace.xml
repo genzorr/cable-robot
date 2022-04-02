@@ -15,15 +15,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83d28c76-5cc4-4609-80f8-1c48aba6a35b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/launch/display.launch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/launch/general_control_unit.launch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/rviz/urdf.rviz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/urdf/cable_robot.urdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot_launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot.launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/package.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/package.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/general_control_unit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/general_control_unit.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/display.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/display.launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/rviz/urdf.rviz" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/rviz/urdf.rviz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/urdf/cable_robot.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/urdf/cable_robot.urdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +79,7 @@
     <property name="cmake.loaded.for.project" value="true" />
     <property name="ctest.advertisement.all.test.configuration.is.created" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/cable_robot/launch" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="CLionExternalConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -160,6 +156,8 @@
       <workItem from="1648827122482" duration="408000" />
       <workItem from="1648827549239" duration="5000" />
       <workItem from="1648827570969" duration="12779000" />
+      <workItem from="1648901929122" duration="4334000" />
+      <workItem from="1648917455125" duration="1908000" />
     </task>
     <servers />
   </component>
