@@ -47,6 +47,6 @@ install(TARGETS general_control_unit
 #  DESTINATION lib/${PROJECT_NAME})
 
 # copy dirs to install folder
-install(DIRECTORY launch config rviz urdf DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY launch config rviz urdf sdf DESTINATION share/${PROJECT_NAME})
 
 ament_package()

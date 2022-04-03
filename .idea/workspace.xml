@@ -18,17 +18,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83d28c76-5cc4-4609-80f8-1c48aba6a35b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/launch/rviz.launch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/sdf/empty.world" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/sdf/gen_sdf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/general_control_unit.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/general_control_unit.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot.launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/display.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/display.launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/general_control_unit.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/general_control_unit.launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/display.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/gazebo.launch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/package.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/package.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/general_control_unit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/general_control_unit.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/urdf/cable_robot.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/urdf/cable_robot.urdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +74,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
@@ -168,7 +165,9 @@
       <workItem from="1648930393194" duration="108000" />
       <workItem from="1648931361933" duration="1700000" />
       <workItem from="1648935001125" duration="176000" />
-      <workItem from="1648935760862" duration="3551000" />
+      <workItem from="1648935760862" duration="5220000" />
+      <workItem from="1649009011323" duration="11745000" />
+      <workItem from="1649022655457" duration="340000" />
     </task>
     <servers />
   </component>
@@ -177,6 +176,7 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.rviz" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.config" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -189,6 +189,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
