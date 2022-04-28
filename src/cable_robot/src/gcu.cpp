@@ -1,7 +1,6 @@
-#include <iostream>
 #include <chrono>
 #include <functional>
-#include "cable_robot/general_control_unit.h"
+#include "cable_robot/gcu.h"
 
 GCU::GCU()
 : Node("gcu"), x_(0.), y_(0.), z_(0.),
@@ -11,7 +10,6 @@ xSpeed_(0.), ySpeed_(0.), zSpeed_(0.),
 controlUpdateInterval_(0.), debugInterval_(0.)
 {
     RCLCPP_INFO(this->get_logger(), "Initializing General Control Unit");
-
     // Load params
     {
         this->declare_parameter<double>("x", 0.0);
@@ -49,7 +47,7 @@ controlUpdateInterval_(0.), debugInterval_(0.)
         "/cmd_vel", qos,
         std::bind(&GCU::controlsUpdateCallback, this, std::placeholders::_1)
     );
-    tfBroadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+//    tfBroadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
 
     RCLCPP_INFO(this->get_logger(), "General Control Unit initialized");
 }
@@ -94,16 +92,6 @@ void GCU::updateCallback()
     restrainSpeed(x_, dx, areaSideX_);
     restrainSpeed(y_, dy, areaSideY_);
     restrainSpeed(z_, dz, areaSideZ_);
-
-    // Send tf2 data
-    geometry_msgs::msg::TransformStamped t;
-    t.header.stamp = this->get_clock()->now();;
-    t.header.frame_id = "world";
-    t.child_frame_id = "base_link";
-    t.transform.translation.x = x_;
-    t.transform.translation.y = y_;
-    t.transform.translation.z = z_;
-    tfBroadcaster_->sendTransform(t);
 }
 
 int main(int argc, char ** argv)

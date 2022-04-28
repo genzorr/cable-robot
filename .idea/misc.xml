@@ -3,4 +3,12 @@
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/src/cable_robot">
     <contentRoot DIR="$PROJECT_DIR$" />
   </component>
+  <component name="CidrRootsConfiguration">
+    <excludeRoots>
+      <file path="$PROJECT_DIR$/build" />
+      <file path="$PROJECT_DIR$/install" />
+      <file path="$PROJECT_DIR$/log" />
+      <file path="$PROJECT_DIR$/logs" />
+    </excludeRoots>
+  </component>
 </project>
