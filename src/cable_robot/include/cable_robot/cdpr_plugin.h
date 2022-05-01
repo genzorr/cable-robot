@@ -9,7 +9,6 @@
 #include <gazebo/physics/Link.hh>
 #include <gazebo/physics/World.hh>
 #include <gazebo/physics/PhysicsEngine.hh>
-//#include <ros/callback_queue.h>
 #include <sensor_msgs/msg/joint_state.hpp>
 #include <gazebo_msgs/msg/link_state.hpp>
 #include <geometry_msgs/msg/twist.hpp>

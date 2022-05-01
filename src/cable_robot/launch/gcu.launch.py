@@ -10,7 +10,7 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='cable_robot',
-            executable='general_control_unit',
+            executable='gcu',
             namespace='cable_robot',
             name='gcu',
             output='screen',

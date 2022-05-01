@@ -12,14 +12,14 @@ endif()
 # find packages
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-#find_package(tf2 REQUIRED)
-#find_package(tf2_ros REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(gazebo REQUIRED)
 find_package(gazebo_ros REQUIRED)
+find_package(gazebo_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(VISP REQUIRED)
 
 # add custom messages
 set(msg_files
@@ -31,20 +31,29 @@ rosidl_generate_interfaces(${PROJECT_NAME}
         ADD_LINTER_TESTS
         )
 ament_export_dependencies(rosidl_default_runtime)
+rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 # set dependencies
-set(dependencies "rclcpp" #[["tf2" "tf2_ros"]] "std_msgs" "sensor_msgs" "geometry_msgs")
+set(dependencies "rclcpp" "std_msgs" "sensor_msgs" "geometry_msgs"
+        "gazebo" "gazebo_ros" "gazebo_msgs"
+        "VISP")
 
 # GCU node
-set(gcu_node_SRCS src/gcu.cpp)
-set(gcu_node_HDRS include/cable_robot/gcu.h)
+set(gcu_node_SRCS
+        src/gcu.cpp
+#        src/cdpr.cpp
+    )
+set(gcu_node_HDRS
+        include/cable_robot/gcu.h
+#        include/cable_robot/cdpr.h
+    )
 
-add_executable(general_control_unit ${gcu_node_SRCS} ${gcu_node_HDRS})
-ament_target_dependencies(general_control_unit ${dependencies})
-target_include_directories(general_control_unit PUBLIC
+add_executable(gcu ${gcu_node_SRCS} ${gcu_node_HDRS})
+ament_target_dependencies(gcu ${dependencies})
+target_include_directories(gcu PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
-install(TARGETS general_control_unit
+install(TARGETS gcu
         DESTINATION lib/${PROJECT_NAME})
 
 # small model plugin subscribes to joint efforts and applies them in Gazebo
@@ -52,8 +61,7 @@ add_library(cdpr_plugin SHARED src/cdpr_plugin.cpp include/cable_robot/cdpr_plug
 target_include_directories(cdpr_plugin PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
-ament_target_dependencies(cdpr_plugin ${dependencies} "gazebo" "gazebo_ros")
-rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
+ament_target_dependencies(cdpr_plugin ${dependencies})
 target_link_libraries(cdpr_plugin "${cpp_typesupport_target}")
 install(TARGETS cdpr_plugin
         DESTINATION share/${PROJECT_NAME})

@@ -15,28 +15,28 @@ def generate_launch_description():
     os.environ['RCUTILS_COLORIZED_OUTPUT'] = '1'
 
     package_path = get_package_share_path('cable_robot')
-    model_config = os.path.join(package_path, 'sdf', 'cable_robot.sdf')
+    # model_config = os.path.join(package_path, 'sdf', 'cable_robot.sdf')
     # gcu_config = os.path.join(package_path, 'config', 'gcu.yaml')
 
     gcu_node = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('cable_robot'), 'launch'), '/gcu.launch.py'])
     )
-    gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py'])
-    )
-    spawn_entity = Node(
-        package='gazebo_ros', executable='spawn_entity.py',
-        arguments=[
-            '-entity', 'cable_robot',
-            '-file', model_config
-        ],
-        output='screen'
-    )
+    # gazebo = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource([os.path.join(
+    #         get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py'])
+    # )
+    # spawn_entity = Node(
+    #     package='gazebo_ros', executable='spawn_entity.py',
+    #     arguments=[
+    #         '-entity', 'cable_robot',
+    #         '-file', model_config
+    #     ],
+    #     output='screen'
+    # )
 
     return LaunchDescription([
-        # gcu_node,
-        gazebo,
-        spawn_entity
+        gcu_node,
+        # gazebo,
+        # spawn_entity
     ])

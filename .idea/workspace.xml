@@ -5,6 +5,7 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="cable_robot" targetName="gcu" />
       <config projectName="cable_robot" targetName="teleop" />
       <config projectName="cable_robot" targetName="cable_robot__rosidl_typesupport_cpp" />
       <config projectName="cable_robot" targetName="cable_robot__rosidl_typesupport_c" />
@@ -16,7 +17,6 @@
       <config projectName="cable_robot" targetName="cable_robot" />
       <config projectName="cable_robot" targetName="cable_robot__rosidl_generator_c" />
       <config projectName="cable_robot" targetName="cable_robot__rosidl_typesupport_c__pyext" />
-      <config projectName="cable_robot" targetName="general_control_unit" />
       <config projectName="cable_robot" targetName="cable_robot_uninstall" />
       <config projectName="cable_robot" targetName="cdpr_plugin" />
       <config projectName="cable_robot" targetName="cable_robot__rosidl_typesupport_fastrtps_c__pyext" />
@@ -35,19 +35,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83d28c76-5cc4-4609-80f8-1c48aba6a35b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr_plugin.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/msg/Tensions.msg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/src/cdpr_plugin.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cable-robot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cable-robot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/launch/cdpr.launch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/src/cdpr.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/general_control_unit.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/gcu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr_plugin.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr_plugin.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/gcu.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/gcu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot.launch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/gazebo.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/gazebo.launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/general_control_unit.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/gcu.launch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/package.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/package.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/general_control_unit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/gcu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/gcu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/gcu.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +89,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="OCResolveContextSettings">
-    <option name="configuration" value="0-Debug-general_control_unit" />
+    <option name="configuration" value="0-Debug-gcu" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -112,14 +113,14 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;cmake.loaded.for.project&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/genzorr/dev/cable-robot/src/cable_robot&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+    &quot;last_opened_file_path&quot;: &quot;/home/genzorr/dev/cable-robot/src/cable_robot/launch&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/cable_robot" />
       <recent name="$PROJECT_DIR$/src/cable_robot/launch" />
+      <recent name="$PROJECT_DIR$/src/cable_robot" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/cable_robot_interfaces" />
@@ -131,9 +132,9 @@
     <configuration name="Build cable_robot" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="CMake_commands" CONFIG_NAME="CMake_commands" RUN_PATH="$PROJECT_DIR$/build/cable_robot/general_control_unit">
       <method v="2" />
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="ament_cmake_python_build_cable_robot_egg" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="ament_cmake_python_build_cable_robot_egg" CONFIG_NAME="Debug">
@@ -226,7 +227,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="general_control_unit" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="general_control_unit" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="cable_robot" RUN_TARGET_NAME="general_control_unit">
+    <configuration name="gcu" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="gcu" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="cable_robot" RUN_TARGET_NAME="gcu">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -260,7 +261,7 @@
       <item itemvalue="CMake Application.cable_robot__rosidl_typesupport_introspection_cpp" />
       <item itemvalue="CMake Application.cable_robot_uninstall" />
       <item itemvalue="CMake Application.cdpr_plugin" />
-      <item itemvalue="CMake Application.general_control_unit" />
+      <item itemvalue="CMake Application.gcu" />
       <item itemvalue="CMake Application.uninstall" />
       <item itemvalue="CMake Application.cable_robot__py" />
       <item itemvalue="CTest Application.All CTest" />
@@ -318,6 +319,13 @@
       <workItem from="1651168473284" duration="6747000" />
       <workItem from="1651182210113" duration="2684000" />
       <workItem from="1651185174205" duration="1756000" />
+      <workItem from="1651187614579" duration="632000" />
+      <workItem from="1651229226681" duration="810000" />
+      <workItem from="1651347230007" duration="14028000" />
+      <workItem from="1651416832669" duration="716000" />
+      <workItem from="1651417844180" duration="1946000" />
+      <workItem from="1651420502179" duration="3735000" />
+      <workItem from="1651441344566" duration="1575000" />
     </task>
     <servers />
   </component>
