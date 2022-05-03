@@ -1,6 +1,7 @@
 #ifndef CABLE_ROBOT_GCU_H
 #define CABLE_ROBOT_GCU_H
 
+#include <utility>
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <geometry_msgs/msg/twist.hpp>
@@ -8,6 +9,7 @@
 #include <geometry_msgs/msg/pose.hpp>
 #include <gazebo_msgs/msg/link_state.hpp>
 #include <visp/vpHomogeneousMatrix.h>
+#include "cable_robot/tda.h"
 
 class GCU: public rclcpp::Node
 {
@@ -31,9 +33,6 @@ public:
     void sendTensions(vpColVector &f);
 
     // get model parameters
-    inline unsigned int n_cables() {return n_cable;}
-    inline double mass() {return mass_;}
-    inline vpMatrix inertia() {return inertia_;}
     inline void tensionMinMax(double &fmin, double &fmax) {fmin = fMin; fmax = fMax;}
 
     // structure matrix
@@ -48,6 +47,8 @@ private:
     void updateCallback();
     void controlsUpdateCallback(geometry_msgs::msg::Twist::ConstSharedPtr vel);
 
+    double t_;
+    double t_prev_;
     double x_;
     double y_;
     double z_;
@@ -81,7 +82,7 @@ private:
     sensor_msgs::msg::JointState tensions_msg;
 
     // pf pose and velocity
-    vpHomogeneousMatrix M_, Md_;
+    vpHomogeneousMatrix M, M_, Md_;
     vpColVector v_, v_d, a_d;
 
     // model data
@@ -89,6 +90,8 @@ private:
     vpMatrix inertia_;
     std::vector<vpTranslationVector> Pf, Pp;
     unsigned int n_cable;
+
+    TDA tda;
 
 
     // callback for platform state

@@ -45,7 +45,7 @@ namespace gazebo
         }
 
         // full cable tensions
-        void TensionCallBack(const cable_robot::msg::Tensions::ConstSharedPtr &msg)
+        void TensionCallBack(cable_robot::msg::Tensions::ConstSharedPtr msg)
         {
             if(msg->names.size() != msg->direction.size() ||
                msg->names.size() != msg->tensions.size())
@@ -73,8 +73,7 @@ namespace gazebo
 
     private:
         // -- general data ----------------------------------------
-        rclcpp::Node::SharedPtr rosnode_;
-//        ros::CallbackQueue callback_queue_;
+        gazebo_ros::Node::SharedPtr rosnode_;
         physics::ModelPtr model_;
         event::ConnectionPtr update_event_;
         double update_T_;

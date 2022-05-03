@@ -14,7 +14,11 @@ def generate_launch_description():
             namespace='cable_robot',
             name='gcu',
             output='screen',
-            parameters=[gcu_config],
-            arguments=['--ros-args', '--log-level', 'cable_robot.gcu:=debug']   # changing log level per node
+            parameters=[
+                gcu_config,
+                {'use_sim_time': True}
+            ],
+            arguments=['--ros-args', '--log-level', 'cable_robot.gcu:=debug'],   # changing log level per node
+            # prefix=['gdb -ex run --args'],
         )
     ])

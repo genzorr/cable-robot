@@ -6,7 +6,7 @@ if(NOT CMAKE_CXX_STANDARD)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    add_compile_options(-Wall -Wextra -Wpedantic)
+    add_compile_options(-Wall -Wextra -Wpedantic #[[-g]])
 endif()
 
 # find packages
@@ -41,11 +41,11 @@ set(dependencies "rclcpp" "std_msgs" "sensor_msgs" "geometry_msgs"
 # GCU node
 set(gcu_node_SRCS
         src/gcu.cpp
-#        src/cdpr.cpp
+        src/tda.cpp
     )
 set(gcu_node_HDRS
         include/cable_robot/gcu.h
-#        include/cable_robot/cdpr.h
+        include/cable_robot/tda.h
     )
 
 add_executable(gcu ${gcu_node_SRCS} ${gcu_node_HDRS})
@@ -67,6 +67,6 @@ install(TARGETS cdpr_plugin
         DESTINATION share/${PROJECT_NAME})
 
 # copy dirs to install folder
-install(DIRECTORY launch config rviz urdf sdf DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY launch config sdf DESTINATION share/${PROJECT_NAME})
 
 ament_package()

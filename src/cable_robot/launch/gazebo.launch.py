@@ -16,7 +16,6 @@ def generate_launch_description():
 
     package_path = get_package_share_path('cable_robot')
     model_config = os.path.join(package_path, 'sdf', 'cable_robot.sdf')
-    # gcu_config = os.path.join(package_path, 'config', 'gcu.yaml')
 
     gcu_node = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
@@ -36,7 +35,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        # gcu_node,
+        gcu_node,
         gazebo,
         spawn_entity
     ])

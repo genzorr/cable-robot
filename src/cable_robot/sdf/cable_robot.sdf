@@ -1128,6 +1128,10 @@
         </dynamics>
       </axis>
     </joint>
-    <plugin name='cdpr_plugin' filename='libcdpr_plugin.so'/>
+    <plugin name='cdpr_plugin' filename='libcdpr_plugin.so'>
+      <ros>
+        <namespace>/cable_robot</namespace>
+      </ros>
+    </plugin>
   </model>
 </sdf>

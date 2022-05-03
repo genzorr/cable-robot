@@ -35,20 +35,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83d28c76-5cc4-4609-80f8-1c48aba6a35b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/launch/cdpr.launch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/src/cdpr.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/tda.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/src/pid_control.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/src/tda.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr_plugin.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr_plugin.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/gcu.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/gcu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/cable_robot.launch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/gazebo.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/gazebo.launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/general_control_unit.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/gcu.launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/gcu.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/gcu.launch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/package.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/package.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/rviz/urdf.rviz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/sdf/cable_robot.sdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/sdf/cable_robot.sdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/cdpr.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/cdpr_plugin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/cdpr_plugin.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/src/gcu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/gcu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/urdf/cable_robot.urdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +119,8 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;cmake.loaded.for.project&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/genzorr/dev/cable-robot/src/cable_robot/launch&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;CLionExternalConfigurable&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -129,12 +135,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Custom Build Application.Build cable_robot">
-    <configuration name="Build cable_robot" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="CMake_commands" CONFIG_NAME="CMake_commands" RUN_PATH="$PROJECT_DIR$/build/cable_robot/general_control_unit">
+    <configuration name="Build cable_robot" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="CMake_commands" CONFIG_NAME="CMake_commands" RUN_PATH="$PROJECT_DIR$/build/cable_robot/gcu">
       <method v="2" />
     </configuration>
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="ament_cmake_python_build_cable_robot_egg" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="ament_cmake_python_build_cable_robot_egg" CONFIG_NAME="Debug">
@@ -325,7 +331,22 @@
       <workItem from="1651416832669" duration="716000" />
       <workItem from="1651417844180" duration="1946000" />
       <workItem from="1651420502179" duration="3735000" />
-      <workItem from="1651441344566" duration="1575000" />
+      <workItem from="1651441344566" duration="1764000" />
+      <workItem from="1651489482229" duration="2719000" />
+      <workItem from="1651492678881" duration="207000" />
+      <workItem from="1651492893262" duration="7000" />
+      <workItem from="1651492938044" duration="1996000" />
+      <workItem from="1651497399590" duration="686000" />
+      <workItem from="1651498521386" duration="18000" />
+      <workItem from="1651498558159" duration="2326000" />
+      <workItem from="1651501259718" duration="3064000" />
+      <workItem from="1651505182157" duration="3654000" />
+      <workItem from="1651515440821" duration="5180000" />
+      <workItem from="1651526157933" duration="1538000" />
+      <workItem from="1651527947235" duration="4911000" />
+      <workItem from="1651532917195" duration="10000" />
+      <workItem from="1651532939436" duration="4481000" />
+      <workItem from="1651538876902" duration="92000" />
     </task>
     <servers />
   </component>

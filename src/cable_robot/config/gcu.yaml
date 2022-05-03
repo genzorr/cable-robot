@@ -2,7 +2,7 @@
   ros__parameters:
     gcu:
       debugInterval: 2e-1  # timer interval for debug info
-      controlUpdateInterval: 1e-6  # timer interval for controls update
+      controlUpdateInterval: 1e-4  # timer interval for controls update
     cdpr:
       x: 0.0
       y: 0.0
