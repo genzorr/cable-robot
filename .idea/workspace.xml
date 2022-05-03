@@ -35,25 +35,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83d28c76-5cc4-4609-80f8-1c48aba6a35b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/tda.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/src/pid_control.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cable_robot/src/tda.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/cmake_commands.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr_plugin.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/cdpr_plugin.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/gcu.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/gcu.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/gazebo.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/gazebo.launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/launch/gcu.launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/launch/gcu.launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/package.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/package.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/rviz/urdf.rviz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/sdf/cable_robot.sdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/sdf/cable_robot.sdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/cdpr.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/src/cdpr_plugin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/cdpr_plugin.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cable_robot/src/gcu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/gcu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/urdf/cable_robot.urdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +81,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="OCResolveContextSettings">
-    <option name="configuration" value="0-Debug-gcu" />
+    <option name="configuration" value="0-Debug-cdpr_plugin" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -138,9 +125,9 @@
     <configuration name="Build cable_robot" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="CMake_commands" CONFIG_NAME="CMake_commands" RUN_PATH="$PROJECT_DIR$/build/cable_robot/gcu">
       <method v="2" />
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="ament_cmake_python_build_cable_robot_egg" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="ament_cmake_python_build_cable_robot_egg" CONFIG_NAME="Debug">
@@ -346,7 +333,11 @@
       <workItem from="1651527947235" duration="4911000" />
       <workItem from="1651532917195" duration="10000" />
       <workItem from="1651532939436" duration="4481000" />
-      <workItem from="1651538876902" duration="92000" />
+      <workItem from="1651538876902" duration="333000" />
+      <workItem from="1651583816969" duration="5366000" />
+      <workItem from="1651589633713" duration="769000" />
+      <workItem from="1651590423920" duration="1304000" />
+      <workItem from="1651592195355" duration="1335000" />
     </task>
     <servers />
   </component>

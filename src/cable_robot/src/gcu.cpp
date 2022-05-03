@@ -4,7 +4,7 @@
 #include "cable_robot/gcu.h"
 
 GCU::GCU()
-: Node("gcu"), x_(0.), y_(0.), z_(0.), t_(0.), t_prev_(0.),
+: Node("gcu"), t_(0.), t_prev_(0.), x_(0.), y_(0.), z_(0.),
 areaSideX_(0.), areaSideY_(0.), areaSideZ_(0.),
 platformSide_(0.), maxSpeed_(0.), mass_(0.),
 xSpeed_(0.), ySpeed_(0.), zSpeed_(0.),
@@ -78,7 +78,7 @@ tda(0., 0, 0., 0., TDA::noMin)
 
         // init listener to platform state
         platform_sub = this->create_subscription<gazebo_msgs::msg::LinkState>(
-                "pf_state", 5,
+                "platform_state", 5,
                 std::bind(&GCU::PFState_cb, this, std::placeholders::_1)
         );
 
@@ -100,15 +100,15 @@ tda(0., 0, 0., 0., TDA::noMin)
 
         // init listener to cable states
         cables_sub = this->create_subscription<sensor_msgs::msg::JointState>(
-                "cable_states", 5,
+                "cable_joints_state", 5,
                 std::bind(&GCU::Cables_cb, this, std::placeholders::_1)
         );
 
         // publisher to cable tensions
-        tensions_pub = this->create_publisher<sensor_msgs::msg::JointState>("cable_command", 5);
+        tensions_pub = this->create_publisher<sensor_msgs::msg::JointState>("cable_control", 5);
     }
 
-    tda = TDA(mass_, n_cable, fMin, fMax, TDA::noMin);
+    tda = TDA(mass_, (int)n_cable, fMin, fMax, TDA::noMin);
 
     RCLCPP_INFO(this->get_logger(), "General Control Unit initialized");
 }
@@ -130,7 +130,7 @@ void GCU::controlsUpdateCallback(const geometry_msgs::msg::Twist::ConstSharedPtr
         RCLCPP_WARN(this->get_logger(), "Reached limit for z speed");
 }
 
-void restrainCoordinate(double &x, double &dx, double min, double max)
+void updateCoordinate(double &x, double &dx, double min, double max)
 {
     if (x + dx < min)
         x = min;
@@ -148,18 +148,17 @@ void GCU::debugCallback()
 
 void GCU::updateCallback()
 {
-    t_prev_ = t_;
-    t_ = (double)this->now().nanoseconds() / 1e+9;
+//    t_prev_ = t_;
+//    t_ = (double)this->now().nanoseconds() / 1e+9;
 //    t_ = this->get_clock()->now().seconds();
 
 //    // Update and restrain coordinate
     auto dt = controlUpdateInterval_;
-    double dx = xSpeed_ * dt, dy = ySpeed_ * dt, dz = zSpeed_ * dt;
-    restrainCoordinate(x_, dx, -areaSideX_/2, areaSideX_/2);
-    restrainCoordinate(y_, dy, -areaSideY_/2, areaSideY_/2);
-    restrainCoordinate(z_, dz, 0, areaSideZ_);
-
-    this->setDesiredPose(x_, y_, z_, 0., 0., 0.);
+//    double dx = xSpeed_ * dt, dy = ySpeed_ * dt, dz = zSpeed_ * dt;
+//    updateCoordinate(x_, dx, -areaSideX_ / 2, areaSideX_ / 2);
+//    updateCoordinate(y_, dy, -areaSideY_ / 2, areaSideY_ / 2);
+//    updateCoordinate(z_, dz, 0, areaSideZ_);
+//    this->setDesiredPose(x_, y_, z_, 0., 0., 0.);
 
     // current position
     this->getPose(M);
@@ -315,7 +314,7 @@ void GCU::sendTensions(vpColVector &f)
     // write effort to jointstate
     for (unsigned int i = 0; i < n_cable; ++i)
         tensions_msg.effort[i] = f[i];
-//    tensions_msg.header.stamp = rosnode_->get_clock()->now().seconds();
+    tensions_msg.header.stamp = this->now();
     tensions_pub->publish(tensions_msg);
 }
 
@@ -323,7 +322,7 @@ int main(int argc, char ** argv)
 {
     rclcpp::init(argc, argv);
     auto gcu = std::make_shared<GCU>();
-//    gcu->setDesiredPose(0, 0, 0, 0, 0, 0);
+    gcu->setDesiredPose(1, -1, 3.5, 0, 0, 0);
 
     rclcpp::spin(gcu);
     rclcpp::shutdown();

@@ -13,6 +13,7 @@ def generate_launch_description():
     os.environ['ROS_LOG_DIR'] = '~/dev/cable-robot/logs'
     os.environ['RCUTILS_CONSOLE_OUTPUT_FORMAT'] = '{time} ({severity}) [{name}] {message}' # ({function_name}():{line_number})'
     os.environ['RCUTILS_COLORIZED_OUTPUT'] = '1'
+    # os.environ['GAZEBO_PLUGIN_PATH'] = '~/dev/cable-robot/install/cable_robot/share/cable_robot/'
 
     package_path = get_package_share_path('cable_robot')
     model_config = os.path.join(package_path, 'sdf', 'cable_robot.sdf')
