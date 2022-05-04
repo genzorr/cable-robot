@@ -3,101 +3,96 @@
 #include "cable_robot/gcu.h"
 
 GCU::GCU()
-: Node("gcu"), x_(0.), y_(0.), z_(0.),
-areaSideX_(0.), areaSideY_(0.), areaSideZ_(0.),
-platformSide_(0.), maxSpeed_(0.), payloadMass_(0.),
-xSpeed_(0.), ySpeed_(0.), zSpeed_(0.),
-controlUpdateInterval_(0.), debugInterval_(0.)
+: Node("gcu"), t(0.), tPrev(0.),
+  areaSideX(0.), areaSideY(0.), areaSideZ(0.),
+  maxSpeed(0.), xSpeed(0.), ySpeed(0.), zSpeed(0.),
+  debugInterval(0.), controlUpdateInterval(0.)
 {
     RCLCPP_INFO(this->get_logger(), "Initializing General Control Unit");
     // Load params
-    {
-        this->declare_parameter<double>("x", 0.0);
-        this->declare_parameter<double>("y", 0.0);
-        this->declare_parameter<double>("z", 0.0);
-        this->declare_parameter<double>("areaSideX", 0.);
-        this->declare_parameter<double>("areaSideY", 0.);
-        this->declare_parameter<double>("areaSideZ", 0.);
-        this->declare_parameter<double>("platformSide", 0.);
-        this->declare_parameter<double>("maxSpeed", 0.);
-        this->declare_parameter<double>("payloadMass", 0.);
-        this->declare_parameter<double>("debugInterval", 0.);
-        this->declare_parameter<double>("controlUpdateInterval", 0.);
-        this->get_parameter("x", x_);
-        this->get_parameter("y", y_);
-        this->get_parameter("z", z_);
-        this->get_parameter("areaSideX", areaSideX_);
-        this->get_parameter("areaSideY", areaSideY_);
-        this->get_parameter("areaSideZ", areaSideZ_);
-        this->get_parameter("platformSide", platformSide_);
-        this->get_parameter("maxSpeed", maxSpeed_);
-        this->get_parameter("payloadMass", payloadMass_);
-        this->get_parameter("debugInterval", debugInterval_);
-        this->get_parameter("controlUpdateInterval", controlUpdateInterval_);
-    }
+    areaSideX = this->declare_parameter<double>("areaSideX", 0.);
+    areaSideY = this->declare_parameter<double>("areaSideY", 0.);
+    areaSideZ = this->declare_parameter<double>("areaSideZ", 0.);
+    maxSpeed = this->declare_parameter<double>("maxSpeed", 0.);
+    debugInterval = this->declare_parameter<double>("debugInterval", 0.);
+    controlUpdateInterval = this->declare_parameter<double>("controlUpdateInterval", 0.);
 
-    debugTimer_ = this->create_wall_timer(
-            std::chrono::milliseconds(int(debugInterval_*1000)), [this] { debugCallback(); });
-    controlUpdateTimer_ = this->create_wall_timer(
-            std::chrono::microseconds(int(controlUpdateInterval_*1000000)), [this] { updateCallback(); });
+    realPos.x = 0; realPos.y = 0; realPos.z = 2;
+    desPos.x = 0; desPos.y = 0; desPos.z = 2;
 
-    // Subs
-    rclcpp::QoS qos(rclcpp::KeepLast(7));
-    controlSub_ = this->create_subscription<geometry_msgs::msg::Twist>(
-        "/cmd_vel", qos,
-        std::bind(&GCU::controlsUpdateCallback, this, std::placeholders::_1)
-    );
-//    tfBroadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+    debugTimer = this->create_wall_timer(
+            std::chrono::milliseconds(int(debugInterval * 1000)), [this]
+            { debugCallback(); });
+    controlUpdateTimer = this->create_wall_timer(
+            std::chrono::microseconds(int(controlUpdateInterval * 1000000)), [this]
+            { updateCallback(); });
+
+    // Subs & pubs
+    controlSub = this->create_subscription<geometry_msgs::msg::Twist>(
+            "/cmd_vel", 5, std::bind(&GCU::controlsUpdateCallback, this, std::placeholders::_1));
+    realPositionSub = this->create_subscription<geometry_msgs::msg::Point>(
+            "real_position", 5, std::bind(&GCU::realPositionCallback, this, std::placeholders::_1));
+    desiredPositionPub = this->create_publisher<geometry_msgs::msg::Point>("desired_position", 5);
 
     RCLCPP_INFO(this->get_logger(), "General Control Unit initialized");
+}
+
+void GCU::debugCallback()
+{
+    RCLCPP_DEBUG(this->get_logger(),
+                 "des: (%.3f, %.3f, %.3f), real: (%.3f, %.3f, %.3f)",
+                 desPos.x, desPos.y, desPos.z, realPos.x, realPos.y, realPos.z);
+//    RCLCPP_DEBUG(this->get_logger(), "dt: %.15f, t: %.15f, tPrev: %.15f", t - tPrev, t, tPrev);
 }
 
 void GCU::controlsUpdateCallback(const geometry_msgs::msg::Twist::ConstSharedPtr vel)
 {
     // Update and restrain speed
-    if (vel->linear.x <= maxSpeed_)
-        xSpeed_ = vel->linear.x;
+    if (vel->linear.x <= maxSpeed)
+        xSpeed = vel->linear.x;
     else
         RCLCPP_WARN(this->get_logger(), "Reached limit for x speed");
-    if (vel->linear.y <= maxSpeed_)
-        ySpeed_ = vel->linear.y;
+    if (vel->linear.y <= maxSpeed)
+        ySpeed = vel->linear.y;
     else
         RCLCPP_WARN(this->get_logger(), "Reached limit for y speed");
-    if (vel->linear.z <= maxSpeed_)
-        zSpeed_ = vel->linear.z;
+    if (vel->linear.z <= maxSpeed)
+        zSpeed = vel->linear.z;
     else
         RCLCPP_WARN(this->get_logger(), "Reached limit for z speed");
 }
 
-void restrainSpeed(double &x, double &dx, double &restrain)
+void updateCoordinate(double &x, double &dx, double min, double max)
 {
-    if (x + dx < 0.)
-        x = 0.;
-    else if (x + dx > restrain)
-        x = restrain;
+    if (x + dx < min)
+        x = min;
+    else if (x + dx > max)
+        x = max;
     else
         x += dx;
 }
 
-void GCU::debugCallback()
-{
-    RCLCPP_DEBUG(this->get_logger(), "x: %.4f, y: %.4f, z: %.4f", x_, y_, z_);
-}
-
 void GCU::updateCallback()
 {
-    // Update and restrain coordinate
-    auto dt = controlUpdateInterval_;
-    double dx = xSpeed_ * dt, dy = ySpeed_ * dt, dz = zSpeed_ * dt;
-    restrainSpeed(x_, dx, areaSideX_);
-    restrainSpeed(y_, dy, areaSideY_);
-    restrainSpeed(z_, dz, areaSideZ_);
+//    tPrev = t;
+//    t = (double)this->now().nanoseconds() / 1e+9;
+//    t = this->get_clock()->now().seconds();
+
+//    // Update and restrain coordinate
+    auto dt = controlUpdateInterval;
+    double dx = xSpeed * dt, dy = ySpeed * dt, dz = zSpeed * dt;
+    updateCoordinate(desPos.x, dx, -areaSideX / 2, areaSideX / 2);
+    updateCoordinate(desPos.y, dy, -areaSideY / 2, areaSideY / 2);
+    updateCoordinate(desPos.z, dz, 0, areaSideZ);
+
+    desiredPositionPub->publish(desPos);
 }
 
 int main(int argc, char ** argv)
 {
     rclcpp::init(argc, argv);
     auto gcu = std::make_shared<GCU>();
+
     rclcpp::spin(gcu);
     rclcpp::shutdown();
     return 0;
