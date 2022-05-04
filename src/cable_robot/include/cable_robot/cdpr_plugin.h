@@ -4,14 +4,10 @@
 #include <rclcpp/rclcpp.hpp>
 #include <gazebo_ros/node.hpp>
 #include <gazebo/common/Plugin.hh>
-#include <gazebo/physics/PhysicsIface.hh>
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Link.hh>
-#include <gazebo/physics/World.hh>
-#include <gazebo/physics/PhysicsEngine.hh>
 #include <sensor_msgs/msg/joint_state.hpp>
 #include <gazebo_msgs/msg/link_state.hpp>
-#include <geometry_msgs/msg/twist.hpp>
 #include "../../../build/cable_robot/rosidl_generator_cpp/cable_robot/msg/tensions.hpp"
 #include "../../../build/cable_robot/rosidl_generator_cpp/cable_robot/msg/detail/tensions__struct.hpp"
 //#include "cable_robot/msg/tensions.hpp"
@@ -28,8 +24,7 @@ namespace gazebo
         };
 
     public:
-        CDPRPlugin() : fMax(0.), controlReceived_(false), cableJoints_() {};
-        ~CDPRPlugin() override = default;
+        CDPRPlugin() : fMax(0.), controlReceived(false), cableJoints() {};
 
         void Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) override;
         virtual void Update();
@@ -37,28 +32,26 @@ namespace gazebo
     private:
         void cableControlCallback(sensor_msgs::msg::JointState::ConstSharedPtr _msg)
         {
-            cableControlCmd_ = *_msg;
-            controlReceived_ = true;
+            tensionsCmd = *_msg;
+            controlReceived = true;
         }
 
     private:
         double fMax;
-        bool controlReceived_;
+        bool controlReceived;
 
-        gazebo_ros::Node::SharedPtr rosnode_;
-        physics::ModelPtr model_;
-        event::ConnectionPtr updateEvent_;
+        gazebo_ros::Node::SharedPtr rosnode;
+        physics::ModelPtr model;
+        event::ConnectionPtr updateEvent;
 
-        std::vector<physics::JointPtr> cableJoints_;    // gazebo cable prismatic joints
-        sensor_msgs::msg::JointState cableJointsState_; // state of cable joints command sent to ROS
-        sensor_msgs::msg::JointState cableControlCmd_;  // command received from ROS to control cables
+        std::vector<physics::JointPtr> cableJoints;    // gazebo cable prismatic joints
+        sensor_msgs::msg::JointState tensionsCmd;      // command received from ROS to control cables
 
-        gazebo_msgs::msg::LinkState platformState_;     // spatial state of platfrom
-        physics::LinkPtr frameLink_, platformLink_;     // frame and platform Gazebo links
+        gazebo_msgs::msg::LinkState platformState;      // spatial state of platfrom
+        physics::LinkPtr frameLink, platformLink;     // frame and platform Gazebo links
 
-        rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr cableControlSub_;
-        rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr cableJointsStatePub_;
-        rclcpp::Publisher<gazebo_msgs::msg::LinkState>::SharedPtr platformStatePub_;
+        rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr tensionsSub;
+        rclcpp::Publisher<gazebo_msgs::msg::LinkState>::SharedPtr platformStatePub;
     };
 
     GZ_REGISTER_MODEL_PLUGIN(CDPRPlugin)

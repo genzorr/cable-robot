@@ -1,18 +1,11 @@
 #ifndef TDA_H
 #define TDA_H
 
-//#include <cdpr_controllers/qp.h>
-//#include <cdpr/cdpr.h>
 #include <cmath>
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/float32_multi_array.hpp>
 #include <visp/vpHomogeneousMatrix.h>
 #include <visp/vpSubColVector.h>
-
-
-// this class implements all candidates for TDA's
-// this way we do not have the same code in all sources
-
 
 class TDA
 {
@@ -24,12 +17,11 @@ public:
         minW, minT, noMin, closed_form, Barycenter, slack_v, adaptive_gains, cvxgen_slack, cvxgen_minT
     } minType;
 
-   
     TDA(double mass, int nCables, double fMin, double fMax, minType _control, bool warm_start = false);
 
     // will look for a solution in [tau +- dTau_max]
     void ForceContinuity(double _dTau_max) {dTau_max = _dTau_max;}
-     void Weighing(double lambda){ _lambda = lambda;}
+    void Weighing(double lambda){ _lambda = lambda;}
 
     vpColVector ComputeDistribution(vpMatrix &W, vpColVector &w);
     vpColVector ComputeDistributionG(vpMatrix &W, vpColVector &ve, vpColVector &pe, vpColVector &w );
