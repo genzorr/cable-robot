@@ -7,6 +7,7 @@
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Link.hh>
 #include <sensor_msgs/msg/joint_state.hpp>
+#include <geometry_msgs/msg/accel.hpp>
 #include <gazebo_msgs/msg/link_state.hpp>
 #include "../../../build/cable_robot/rosidl_generator_cpp/cable_robot/msg/tensions.hpp"
 #include "../../../build/cable_robot/rosidl_generator_cpp/cable_robot/msg/detail/tensions__struct.hpp"
@@ -48,10 +49,12 @@ namespace gazebo
         sensor_msgs::msg::JointState tensionsCmd;      // command received from ROS to control cables
 
         gazebo_msgs::msg::LinkState platformState;      // spatial state of platfrom
+        geometry_msgs::msg::Accel platformAccel;
         physics::LinkPtr frameLink, platformLink;     // frame and platform Gazebo links
 
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr tensionsSub;
         rclcpp::Publisher<gazebo_msgs::msg::LinkState>::SharedPtr platformStatePub;
+        rclcpp::Publisher<geometry_msgs::msg::Accel>::SharedPtr platformAccelPub;
     };
 
     GZ_REGISTER_MODEL_PLUGIN(CDPRPlugin)

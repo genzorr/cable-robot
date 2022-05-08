@@ -63,7 +63,7 @@ add_library(cdpr_plugin SHARED src/cdpr_plugin.cpp include/cable_robot/cdpr_plug
 target_include_directories(cdpr_plugin PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
-ament_target_dependencies(cdpr_plugin "rclcpp" "sensor_msgs" "gazebo" "gazebo_ros" "gazebo_msgs" "VISP")
+ament_target_dependencies(cdpr_plugin "rclcpp" "sensor_msgs" "geometry_msgs" "gazebo" "gazebo_ros" "gazebo_msgs" "VISP")
 target_link_libraries(cdpr_plugin "${cpp_typesupport_target}")
 install(TARGETS cdpr_plugin
         DESTINATION share/${PROJECT_NAME})

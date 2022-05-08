@@ -21,9 +21,6 @@ private:
     double areaSideY;
     double areaSideZ;
     double maxSpeed;
-    double xSpeed;
-    double ySpeed;
-    double zSpeed;
 
     double debugInterval;
     double controlUpdateInterval;
@@ -32,9 +29,11 @@ private:
 
     geometry_msgs::msg::Point realPos;
     geometry_msgs::msg::Point desPos;
+    geometry_msgs::msg::Twist desVel;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr controlSub;      // get contol from /cmd_vel
     rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr realPositionSub; // real position from Gazebo/IMU
     rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr desiredPositionPub;
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr desiredVelocityPub;
 
     void realPositionCallback(geometry_msgs::msg::Point::ConstSharedPtr msg)
     {

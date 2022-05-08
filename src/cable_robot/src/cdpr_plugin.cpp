@@ -40,6 +40,7 @@ namespace gazebo
                 std::bind(&CDPRPlugin::cableControlCallback, this, std::placeholders::_1)
         );
         platformStatePub = rosnode->create_publisher<gazebo_msgs::msg::LinkState>("platform_state", 5);
+        platformAccelPub = rosnode->create_publisher<geometry_msgs::msg::Accel>("platform_accel", 5);
 
         // Register plugin update
         updateEvent = event::Events::ConnectWorldUpdateBegin(std::bind(&CDPRPlugin::Update, this));
@@ -54,12 +55,17 @@ namespace gazebo
             for (unsigned int i = 0; i < tensionsCmd.name.size(); ++i)
             {
                 if (tensionsCmd.effort[i] > 0)
-                    cableJoints[i]->SetForce(0, std::min(tensionsCmd.effort[i], fMax));
+                    cableJoints[i]->SetForce(0, std::min(std::max(0., tensionsCmd.effort[i]), fMax));
             }
         }
 
+//        auto frame_pose = frameLink->WorldPose();
+//        RCLCPP_INFO(rosnode->get_logger(), "%f %f %f", frame_pose.Pos().X(), frame_pose.Pos().Y(), frame_pose.Pos().Z());
+//        auto pf_pose = platformLink->WorldPose() - frameLink->WorldPose();
+//        RCLCPP_INFO(rosnode->get_logger(), "%f %f %f", pf_pose.Pos().X(), pf_pose.Pos().Y(), pf_pose.Pos().Z());
+
         // publish platform state
-        auto pf_pose = platformLink->WorldPose() - frameLink->WorldPose();
+        auto pf_pose = platformLink->WorldPose();
         platformState.pose.position.x = pf_pose.Pos().X();
         platformState.pose.position.y = pf_pose.Pos().Y();
         platformState.pose.position.z = pf_pose.Pos().Z();
@@ -67,15 +73,25 @@ namespace gazebo
         platformState.pose.orientation.y = pf_pose.Rot().Y();
         platformState.pose.orientation.z = pf_pose.Rot().Z();
         platformState.pose.orientation.w = pf_pose.Rot().W();
-        auto vel = pf_pose.Rot().RotateVector(platformLink->RelativeLinearVel());
+        auto vel = platformLink->WorldLinearVel();
         platformState.twist.linear.x = vel.X();
         platformState.twist.linear.y = vel.Y();
         platformState.twist.linear.z = vel.Z();
-        vel = pf_pose.Rot().RotateVector(platformLink->RelativeAngularVel());
+        vel = platformLink->WorldAngularVel();
         platformState.twist.angular.x = vel.X();
         platformState.twist.angular.y = vel.Y();
         platformState.twist.angular.z = vel.Z();
 
         platformStatePub->publish(platformState);
+
+        auto pf_accel = platformLink->WorldLinearAccel();
+        platformAccel.linear.x = pf_accel.X();
+        platformAccel.linear.y = pf_accel.Y();
+        platformAccel.linear.z = pf_accel.Z();
+        pf_accel = platformLink->WorldAngularAccel();
+        platformAccel.angular.x = pf_accel.X();
+        platformAccel.angular.y = pf_accel.Y();
+        platformAccel.angular.z = pf_accel.Z();
+        platformAccelPub->publish(platformAccel);
     }
 }   // namespace gazebo

@@ -326,14 +326,17 @@
       </collision>
       <inertial>
         <inertia>
-          <ixx>1</ixx>
-          <iyy>1</iyy>
-          <izz>1</izz>
+<!--          <ixx>1</ixx>-->
+<!--          <iyy>1</iyy>-->
+<!--          <izz>1</izz>-->
+          <ixx>0.057</ixx>
+          <iyy>0.057</iyy>
+          <izz>0.107</izz>
           <ixy>0</ixy>
           <ixz>0</ixz>
           <iyz>0</iyz>
         </inertia>
-        <mass>1</mass>
+        <mass>4</mass>
       </inertial>
     </link>
     <link name='cable0'>

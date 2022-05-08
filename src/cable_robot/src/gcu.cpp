@@ -5,8 +5,7 @@
 GCU::GCU()
 : Node("gcu"), t(0.), tPrev(0.),
   areaSideX(0.), areaSideY(0.), areaSideZ(0.),
-  maxSpeed(0.), xSpeed(0.), ySpeed(0.), zSpeed(0.),
-  debugInterval(0.), controlUpdateInterval(0.)
+  maxSpeed(0.), debugInterval(0.), controlUpdateInterval(0.)
 {
     RCLCPP_INFO(this->get_logger(), "Initializing General Control Unit");
     // Load params
@@ -33,6 +32,7 @@ GCU::GCU()
     realPositionSub = this->create_subscription<geometry_msgs::msg::Point>(
             "real_position", 5, std::bind(&GCU::realPositionCallback, this, std::placeholders::_1));
     desiredPositionPub = this->create_publisher<geometry_msgs::msg::Point>("desired_position", 5);
+    desiredVelocityPub = this->create_publisher<geometry_msgs::msg::Twist>("desired_velocity", 5);
 
     RCLCPP_INFO(this->get_logger(), "General Control Unit initialized");
 }
@@ -49,17 +49,19 @@ void GCU::controlsUpdateCallback(const geometry_msgs::msg::Twist::ConstSharedPtr
 {
     // Update and restrain speed
     if (vel->linear.x <= maxSpeed)
-        xSpeed = vel->linear.x;
+        desVel.linear.x = vel->linear.x;
     else
         RCLCPP_WARN(this->get_logger(), "Reached limit for x speed");
     if (vel->linear.y <= maxSpeed)
-        ySpeed = vel->linear.y;
+        desVel.linear.y = vel->linear.y;
     else
         RCLCPP_WARN(this->get_logger(), "Reached limit for y speed");
     if (vel->linear.z <= maxSpeed)
-        zSpeed = vel->linear.z;
+        desVel.linear.z = vel->linear.z;
     else
         RCLCPP_WARN(this->get_logger(), "Reached limit for z speed");
+    desVel.angular.x = desVel.angular.y = desVel.angular.z = 0;
+    desiredVelocityPub->publish(desVel);
 }
 
 void updateCoordinate(double &x, double &dx, double min, double max)
@@ -80,7 +82,7 @@ void GCU::updateCallback()
 
 //    // Update and restrain coordinate
     auto dt = controlUpdateInterval;
-    double dx = xSpeed * dt, dy = ySpeed * dt, dz = zSpeed * dt;
+    double dx = desVel.linear.x * dt, dy = desVel.linear.y * dt, dz = desVel.linear.z * dt;
     updateCoordinate(desPos.x, dx, -areaSideX / 2, areaSideX / 2);
     updateCoordinate(desPos.y, dy, -areaSideY / 2, areaSideY / 2);
     updateCoordinate(desPos.z, dz, 0, areaSideZ);
