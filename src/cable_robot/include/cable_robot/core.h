@@ -69,9 +69,12 @@ private:
         vd[0] = msg->linear.x;
         vd[1] = msg->linear.y;
         vd[2] = msg->linear.z;
-        vd[3] = msg->angular.x;
-        vd[4] = msg->angular.y;
-        vd[5] = msg->angular.z;
+//        vd[3] = msg->angular.x;
+//        vd[4] = msg->angular.y;
+//        vd[5] = msg->angular.z;
+        vd[3] = 0;
+        vd[4] = 0;
+        vd[5] = 0;
 //        RCLCPP_INFO(this->get_logger(), "%f %f %f %f %f %f", vd[0], vd[1], vd[2], vd[3], vd[4], vd[5]);
     }
 

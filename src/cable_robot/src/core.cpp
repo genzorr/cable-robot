@@ -63,7 +63,7 @@ Core::Core()
     desiredVelocitySub = this->create_subscription<geometry_msgs::msg::Twist>(
             "desired_velocity", 5, std::bind(&Core::desiredVelocityCallback, this, std::placeholders::_1));
 
-    tdaSolver = std::make_unique<TDA>(mass, nCables, fMin, fMax, TDA::closed_form);
+    tdaSolver = std::make_unique<TDA>(mass, nCables, fMin, fMax, TDA::noMin);
 
     RCLCPP_INFO(this->get_logger(), "CDPR Core initialized");
 }
@@ -256,6 +256,7 @@ void Core::updateCallback()
     this->computeW(W);
     // call TDA solver
     auto tau = tdaSolver->ComputeDistribution(W, w);
+//    tau.cppPrint(std::cout, "tda");
 
     // send tensions
     this->sendTensions(tau);
