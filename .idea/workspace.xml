@@ -36,9 +36,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83d28c76-5cc4-4609-80f8-1c48aba6a35b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/dynamics-solve.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/core.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/core.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/core.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/math/optimization.nb" beforeDir="false" afterPath="$PROJECT_DIR$/math/optimization.nb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,6 +355,8 @@
       <workItem from="1652042322219" duration="8157000" />
       <workItem from="1653402967804" duration="6408000" />
       <workItem from="1653496090379" duration="1277000" />
+      <workItem from="1654112458227" duration="48000" />
+      <workItem from="1654112520275" duration="1839000" />
     </task>
     <servers />
   </component>
