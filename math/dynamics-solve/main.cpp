@@ -133,7 +133,7 @@ int main()
     arma::vec3 r = {0.2, 0.2, 2};
 
     double step = (double)1/20;
-    double angle = 3;
+    double angle = 10;
     int starts[3] = {int((0 - angle)/step), int((0 - angle)/step), int((0 - angle)/step)};
     int ends[3] = {int((0 + angle)/step), int((0 + angle)/step), int((0 + angle)/step)};
 
