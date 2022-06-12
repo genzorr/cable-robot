@@ -132,30 +132,15 @@ int main()
 
     arma::vec3 r = {0.2, 0.2, 2};
 
-    double step = (double)1/20;
-    double angle = 10;
-    int starts[3] = {int((0 - angle)/step), int((0 - angle)/step), int((0 - angle)/step)};
-    int ends[3] = {int((0 + angle)/step), int((0 + angle)/step), int((0 + angle)/step)};
-
-    auto start_t = std::chrono::system_clock::now();
-    searchTensions(a, b, r, wp, starts, ends, step);
-    std::chrono::duration<double> elapsed = std::chrono::system_clock::now() - start_t;
-    std::cout << "Elapsed: " << elapsed.count() << std::endl;
-
-//    arma::vec3 phi = {0, 0, 0};
-//    arma::mat33 R;
-//    getRotMat(R, phi);
-//    R.print(std::cout, "R");
+//    double step = (double)1/20;
+//    double angle = 10;
+//    int starts[3] = {int((0 - angle)/step), int((0 - angle)/step), int((0 - angle)/step)};
+//    int ends[3] = {int((0 + angle)/step), int((0 + angle)/step), int((0 + angle)/step)};
 //
-//    arma::mat W;
-//    W.reshape(6, 4);
-//    getWrenchMat(W, a, b, r, R);
-//    W.print(std::cout, "W");
-//
-//    std::cout << arma::rank(W) << std::endl;
-//
-//    arma::vec4 t = arma::pinv(W) * wp;
-//    t.print(std::cout, "tensions");
+//    auto start_t = std::chrono::system_clock::now();
+//    searchTensions(a, b, r, wp, starts, ends, step);
+//    std::chrono::duration<double> elapsed = std::chrono::system_clock::now() - start_t;
+//    std::cout << "Elapsed: " << elapsed.count() << std::endl;
 
     return 0;
 }
