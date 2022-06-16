@@ -8,42 +8,53 @@
 #include <gazebo_msgs/msg/link_state.hpp>
 #include <visp/vpHomogeneousMatrix.h>
 #include "cable_robot/tda.h"
+#include "cable_robot/EigenQP.h"
 
 class Core: public rclcpp::Node
 {
 public:
     Core();
 
-    inline void getPose(vpHomogeneousMatrix &T_) {T_ = T;}
-    inline void setDesiredPose(double tx, double ty, double tz, double tux, double tuy, double tuz)
-    { Td = vpHomogeneousMatrix(tx, ty, tz, tux, tuy, tuz);}
-    inline vpPoseVector getPoseError() {
-//        vpTranslationVector t, td;
-//        T.extract(t); Td.extract(td);
-//        return td - t;
-        return vpPoseVector(T.inverse() * Td);
-    }
+//    inline void getPose(vpHomogeneousMatrix &T_) {T_ = T;}
+//    inline void setDesiredPose(double tx, double ty, double tz, double tux, double tuy, double tuz)
+//    { Td = vpHomogeneousMatrix(tx, ty, tz, tux, tuy, tuz);}
+//    inline vpPoseVector getPoseError() {
+////        vpTranslationVector t, td;
+////        T.extract(t); Td.extract(td);
+////        return td - t;
+//        return vpPoseVector(T.inverse() * Td);
+//    }
 
     void computeW(vpMatrix &W);
-    void computeDesiredW(vpMatrix &Wd);
-    void computeLength(vpColVector &L);
-    void computeDesiredLength(vpColVector &Ld);
+    void computeLengths();
+    void computeL();
+
+    void computeQPMatrices(vpMatrix &Aeq, vpColVector &Beq, vpMatrix &Aineq, vpColVector &Bineq);
 
     void sendTensions(vpColVector &f);
     void sendRealPosition();
 
 private:
+    bool update;
     int nCables;
     double mass;
     double fMin, fMax;
     vpColVector a, v, vd;
     // math
-    vpMatrix Ir;
-    vpHomogeneousMatrix T, Td; // current and desired transformation matrices for platform state
+    vpMatrix Ip;
+//    vpHomogeneousMatrix T, Td; // current and desired transformation matrices for platform state
+    vpTranslationVector r, rd;
+    vpRotationMatrix R;
+    double alpha0, beta0, gamma0;
     std::vector<vpTranslationVector> framePoints, platformPoints;
 
     double controlUpdateInterval;
     rclcpp::TimerBase::SharedPtr controlUpdateTimer;
+
+    // TDA vars
+    std::vector<double> lengths;
+    vpMatrix L0;
+    vpColVector f0hat;
 
     // Subs & pubs
     sensor_msgs::msg::JointState tensionsMsg;
@@ -54,14 +65,12 @@ private:
     rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr desiredPositionSub;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr desiredVelocitySub;
 
-    // TDA solver
-    std::unique_ptr<TDA> tdaSolver;
-
     void updateCallback();
 
     void desiredPositionCallback(geometry_msgs::msg::Point::ConstSharedPtr msg)
     {
-        this->setDesiredPose(msg->x, msg->y, msg->z, 0., 0., 0.);
+        rd.buildFrom(msg->x, msg->y, msg->z);
+//        this->setDesiredPose(msg->x, msg->y, msg->z, 0., 0., 0.);
     }
 
     void desiredVelocityCallback(geometry_msgs::msg::Twist::ConstSharedPtr msg)
@@ -81,10 +90,14 @@ private:
     // callback for platform state
     void platformStateCallback(gazebo_msgs::msg::LinkState::ConstSharedPtr msg)
     {
+        update = true;
         // Set current homogenous matrix
-        T.insert(vpTranslationVector(msg->pose.position.x, msg->pose.position.y, msg->pose.position.z));
-        T.insert(vpQuaternionVector(msg->pose.orientation.x, msg->pose.orientation.y, msg->pose.orientation.z,
-                                    msg->pose.orientation.w));
+//        T.insert(vpTranslationVector(msg->pose.position.x, msg->pose.position.y, msg->pose.position.z));
+//        T.insert(vpQuaternionVector(msg->pose.orientation.x, msg->pose.orientation.y, msg->pose.orientation.z,
+//                                    msg->pose.orientation.w));
+        r.buildFrom(msg->pose.position.x, msg->pose.position.y, msg->pose.position.z);
+        R.buildFrom(vpQuaternionVector(msg->pose.orientation.x, msg->pose.orientation.y, msg->pose.orientation.z,
+                                       msg->pose.orientation.w));
 
         v[0] = msg->twist.linear.x;
         v[1] = msg->twist.linear.y;
@@ -92,6 +105,9 @@ private:
         v[3] = msg->twist.angular.x;
         v[4] = msg->twist.angular.y;
         v[5] = msg->twist.angular.z;
+
+        computeLengths();
+        computeL();
 
         geometry_msgs::msg::Point position;
         position.x = msg->pose.position.x;

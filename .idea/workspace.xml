@@ -36,16 +36,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83d28c76-5cc4-4609-80f8-1c48aba6a35b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/dynamics-solve.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/math/dynamics-solve/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/EigenQP.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cable_robot/src/EigenQP.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/math/dynamics-solve/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/math/dynamics-solve/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/math/optimization.nb" beforeDir="false" afterPath="$PROJECT_DIR$/math/optimization.nb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/config/core.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/config/core.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/config/gcu.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/core.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/core.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/tda.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/include/cable_robot/tda.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/core.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cable_robot/src/tda.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/cable_robot/src/tda.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +132,11 @@
   <component name="RunManager" selected="Custom Build Application.Build cable_robot">
     <configuration name="Build cable_robot" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="CMake_commands" CONFIG_NAME="CMake_commands" RUN_PATH="$PROJECT_DIR$/build/cable_robot/gcu">
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
     </configuration>
     <configuration name="ament_cmake_python_build_cable_robot_egg" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cable_robot" TARGET_NAME="ament_cmake_python_build_cable_robot_egg" CONFIG_NAME="Debug">
       <method v="2">
@@ -357,6 +364,15 @@
       <workItem from="1653496090379" duration="1277000" />
       <workItem from="1654112458227" duration="48000" />
       <workItem from="1654112520275" duration="1839000" />
+      <workItem from="1655208230964" duration="9000" />
+      <workItem from="1655208252217" duration="993000" />
+      <workItem from="1655209747926" duration="12255000" />
+      <workItem from="1655243510989" duration="9490000" />
+      <workItem from="1655288862591" duration="6000" />
+      <workItem from="1655290839168" duration="927000" />
+      <workItem from="1655291888855" duration="11171000" />
+      <workItem from="1655310489191" duration="8366000" />
+      <workItem from="1655322667259" duration="6265000" />
     </task>
     <servers />
   </component>
