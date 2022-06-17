@@ -29,7 +29,8 @@ public:
     void computeLengths();
     void computeL();
 
-    void computeQPMatrices(vpMatrix &Aeq, vpColVector &Beq, vpMatrix &Aineq, vpColVector &Bineq);
+//    void computeQPMatrices(vpMatrix &Aeq, vpColVector &Beq, vpMatrix &Aineq, vpColVector &Bineq);
+    void computeQPMatrices(Eigen::MatrixXd &Aeq, Eigen::VectorXd &Beq, Eigen::MatrixXd &Aineq, Eigen::VectorXd &Bineq);
 
     void sendTensions(vpColVector &f);
     void sendRealPosition();
