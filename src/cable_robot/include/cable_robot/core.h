@@ -7,7 +7,6 @@
 #include <geometry_msgs/msg/accel.hpp>
 #include <gazebo_msgs/msg/link_state.hpp>
 #include <visp/vpHomogeneousMatrix.h>
-#include "cable_robot/tda.h"
 #include "cable_robot/EigenQP.h"
 
 class Core: public rclcpp::Node

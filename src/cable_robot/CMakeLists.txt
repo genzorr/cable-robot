@@ -48,11 +48,9 @@ install(TARGETS gcu DESTINATION lib/${PROJECT_NAME})
 # Core node
 set(core_node_srcs
         src/core.cpp
-        src/tda.cpp
         src/EigenQP.cpp)
 set(core_node_hdrs
         include/cable_robot/core.h
-        include/cable_robot/tda.h
         include/cable_robot/EigenQP.h)
 add_executable(core ${core_node_srcs} ${core_node_hdrs})
 ament_target_dependencies(core "rclcpp" "sensor_msgs" "geometry_msgs" "gazebo_msgs" "VISP")
