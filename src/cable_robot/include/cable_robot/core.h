@@ -36,6 +36,7 @@ public:
 
 private:
     bool update;
+    int count;
     int nCables;
     double mass;
     double fMin, fMax;

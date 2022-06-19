@@ -1,7 +1,7 @@
 #include "cable_robot/core.h"
 
 Core::Core()
-: Node("core"), update(false), mass(0.), a(6, 0.), v(6, 0.), vd(6, 0.), lengths(4), L0(7, 7), /*f0hat(4, 0.)*/f0hat(4, 4.905)
+: Node("core"), update(false), count(0), mass(0.), a(6, 0.), v(6, 0.), vd(6, 0.), lengths(4), L0(7, 7), /*f0hat(4, 0.)*/f0hat(4, 4.905)
 {
     RCLCPP_INFO(this->get_logger(), "Initializing CDPR Core");
     // Load params
@@ -140,7 +140,7 @@ void Core::computeQPMatrices(Eigen::MatrixXd &Aeq, Eigen::VectorXd &Beq, Eigen::
 
     double eps = 1e-1;
     double Kp = 5, Kd = 0.1, dtm1 = 1/controlUpdateInterval;
-    double c = Kp + Kd*dtm1 + dtm1*dtm1;
+    double c = Kp + Kd*dtm1;// + dtm1*dtm1;
 
 //    std::cout << "c: " << c << std::endl;
 //    std::cout << a11 << " " << a12 << " " << a13 << std::endl;
@@ -148,9 +148,8 @@ void Core::computeQPMatrices(Eigen::MatrixXd &Aeq, Eigen::VectorXd &Beq, Eigen::
 
     std::vector<double> dX =     {rd[0]-r[0], rd[1]-r[1], rd[2]-r[2], 0, 0, 0};
     std::vector<double> dXdot =  {vd[0]-v[0], vd[1]-v[1], vd[2]-v[2], 0, 0, 0};
-//    vpColVector X0 = -c*vpColVector(X) + (-dtm1 - Kd)*v;
-//    double X01 = X0[0], X02 = X0[1], X03 = X0[2], X04 = X0[3], X05 = X0[4], X06 = X0[5];
-    vpColVector X0 = (Kd + dtm1)*vpColVector(dXdot) + Kp*vpColVector(dX);
+//    vpColVector X0 = (Kd + dtm1)*vpColVector(dXdot) + Kp*vpColVector(dX);
+    vpColVector X0 = Kd*vpColVector(dXdot) + Kp*vpColVector(dX);
     double X01 = X0[0], X02 = X0[1], X03 = X0[2], X04 = X0[3], X05 = X0[4], X06 = X0[5];
 
     Aeq(0,0) = a11 - x - b13*sb + cb*(-b11*cg + b12*sg);
@@ -218,14 +217,14 @@ void Core::computeQPMatrices(Eigen::MatrixXd &Aeq, Eigen::VectorXd &Beq, Eigen::
 
     for (int i = 0; i < nCables; i++)
     {
-//        Aineq(i,i) = lengths[i];
-//        Aineq(i+7,i) = -lengths[i];
-//        Bineq(i) = -lengths[i]*f0hat[i] + fMax;
-//        Bineq(i+7) = lengths[i]*f0hat[i] - fMin;
         Aineq(i,i) = lengths[i];
         Aineq(i+7,i) = -lengths[i];
-        Bineq(i) = lengths[i];
-        Bineq(i+7) = lengths[i];
+        Bineq(i) = -lengths[i]*f0hat[i] + fMax;
+        Bineq(i+7) = lengths[i]*f0hat[i] - fMin;
+//        Aineq(i,i) = lengths[i];
+//        Aineq(i+7,i) = -lengths[i];
+//        Bineq(i) = lengths[i];
+//        Bineq(i+7) = lengths[i];
     }
     for (int i = nCables; i < nCables+3; i++)
     {
@@ -320,6 +319,9 @@ void Core::updateCallback()
 
     if (!update)
         return;
+//    count += 1;
+//    if (count > 10)
+//        exit(1);
 
     std::vector<double> f0hatEx(7, 0.);
     for (int i = 0; i < (int)f0hat.size(); i++)
@@ -344,7 +346,7 @@ void Core::updateCallback()
         g0(i) = c[i];
     }
 
-
+//    std::cout << "count: " << count << std::endl;
 //    std::cout << "G: " << G << std::endl;
 //    std::cout << "g0: " << g0 << std::endl;
 //    std::cout << "CE: " << CE << std::endl;
