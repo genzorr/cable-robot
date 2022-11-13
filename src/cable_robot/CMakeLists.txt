@@ -17,21 +17,9 @@ find_package(geometry_msgs REQUIRED)
 find_package(gazebo REQUIRED)
 find_package(gazebo_ros REQUIRED)
 find_package(gazebo_msgs REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
 find_package(VISP REQUIRED)
 find_package(Eigen3)
-
-# add custom messages
-set(msg_files
-        "msg/Tensions.msg"
-        )
-rosidl_generate_interfaces(${PROJECT_NAME}
-        ${msg_files}
-        DEPENDENCIES geometry_msgs
-        ADD_LINTER_TESTS
-        )
-ament_export_dependencies(rosidl_default_runtime)
-rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
+find_package(cable_robot_interfaces REQUIRED)
 
 # GCU node
 set(gcu_node_srcs
@@ -64,7 +52,7 @@ add_library(cdpr_plugin SHARED src/cdpr_plugin.cpp include/cable_robot/cdpr_plug
 target_include_directories(cdpr_plugin PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
-ament_target_dependencies(cdpr_plugin "rclcpp" "sensor_msgs" "geometry_msgs" "gazebo" "gazebo_ros" "gazebo_msgs" "VISP")
+ament_target_dependencies(cdpr_plugin "rclcpp" "sensor_msgs" "geometry_msgs" "gazebo" "gazebo_ros" "gazebo_msgs" "VISP" "cable_robot_interfaces")
 target_link_libraries(cdpr_plugin "${cpp_typesupport_target}")
 install(TARGETS cdpr_plugin
         DESTINATION share/${PROJECT_NAME})
